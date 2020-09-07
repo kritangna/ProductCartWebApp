@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ProductCart.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Add">Add New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdName)
+            </th>
+            <th>
+                <!-- <img src="~/Images/Screenshot (74).png" />-->
+                @Html.DisplayNameFor(model => model.ProdImageName)
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdImageName)
+            </td>
+            <td>
+                <!--<img src="~/Image/003200340.png" />-->
+                <img src="@("~/Image/"+ item.ProdImageName)" asp-append-version="true" width="200" height="200" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdPrice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProdID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProdID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProdID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
