@@ -12,6 +12,6 @@ namespace ProductCartTests
 
         }
 
-        public DbSet<DummyProductSchema> ProductCartDummyData { get; set; }
+        public DbSet<DummyDataDbInitializer> ProductCartDummyData { get; set; }
     }
 }
