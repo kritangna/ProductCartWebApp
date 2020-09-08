@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductCart.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,6 @@ namespace ProductCartTests
 
         }
 
-        public DbSet<DummyDataDbInitializer> ProductCartDummyData { get; set; }
+        public DbSet<Product> ProductCartDummyData { get; set; }
     }
 }

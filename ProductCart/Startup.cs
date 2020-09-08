@@ -16,11 +16,10 @@ namespace ProductCart
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        //public IWebHostBuilder _hostBuilder { get; }
-        public Startup(IConfiguration configuration/*, IWebHostBuilder hostBuilder*/)
+        
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //_hostBuilder = hostBuilder;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
