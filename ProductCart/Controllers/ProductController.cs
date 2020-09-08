@@ -16,7 +16,7 @@ namespace ProductCart.Controllers
     public class ProductController : Controller
     {
         private readonly ProductContext _context;
-
+       
         public Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostEnvironment { get; }
 
         public ProductController(ProductContext context, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnvironment)
@@ -171,6 +171,13 @@ namespace ProductCart.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);
+            //Deleting image from wwwroot/image
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image",product.ProdImageName);
+            if(System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+            //Deleting the record
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
